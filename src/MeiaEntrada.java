@@ -58,7 +58,12 @@ public class MeiaEntrada extends Ingresso {
 	 */
 	@Override 
 	public double valorIngresso() {
-		//TODO
-		return  0;
+		double valor = this.VALOR_ENTRADA/2;
+
+		for(EAdicional e: this.adicionais){
+			valor += e.valor();
+		}
+
+		return valor;
 	}
 }

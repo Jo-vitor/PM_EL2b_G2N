@@ -50,7 +50,8 @@ public class Clube extends Ingresso {
 	 * @param clube categoria do clube utilizada para definir os descontos
 	 */
 	public Clube(String filme, LocalDateTime sessao, EClube clube) {
-		//TODO
+		super(filme, sessao);
+		this.categoria = clube;
 	}
 
 	/**
@@ -59,7 +60,16 @@ public class Clube extends Ingresso {
 	 */
 	@Override 
 	public double valorIngresso() {
-		//TODO
-		return  0;
+		double valor = this.VALOR_ENTRADA * ((100 - categoria.descontoEntrada())/100);
+
+		double valorAdicionais = 0;
+
+		for(EAdicional e: this.adicionais){
+			valorAdicionais += e.valor();
+		}
+
+		valor += (valorAdicionais * ((100-categoria.descontoAdicionais())/100));
+
+		return valor;
 	}
 }

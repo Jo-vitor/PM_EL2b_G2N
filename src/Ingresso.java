@@ -59,7 +59,7 @@ public abstract class Ingresso {
 	/**
 	 * Lista de adicionais vinculados ao ingresso.
 	 */
-	private List<EAdicional> adicionais;
+	protected  List<EAdicional> adicionais;
 
 	/**
 	 * Constrói um ingresso com filme e sessão.
@@ -118,7 +118,15 @@ public abstract class Ingresso {
 	 */
 	@Override 
 	public String toString() {
-		//TODO
-		return "";
+		String cupom = "Filme: " + this.filme + "\nAdicionais: ";
+
+		for(EAdicional e: this.adicionais){
+			cupom += e.toString().toLowerCase() + " ";
+		}
+
+		cupom += "\nValor: " + this.valorIngresso();
+
+
+		return cupom;
 	}
 }
